@@ -65,11 +65,12 @@
          @"street":rgcData.street,
          
          @"locationDescribe":rgcData.locationDescribe,
-         @"adCode":rgcData.adCode,
+         @"adCode":rgcData.adCode == NULL ? @"" : rgcData.adCode,
          @"isInChina":@(isInChina),
          @"errorCode":@(161),
     };
 }
+
 
 -(void)getCurrentLocation: (FlutterResult)result{
     self.completionBlock = ^(BMKLocation *location, BMKLocationNetworkState state, NSError *error)

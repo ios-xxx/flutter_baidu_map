@@ -50,19 +50,19 @@
          @"latitude":@(location.location.coordinate.latitude),
          @"longitude":@(location.location.coordinate.longitude),
          
-         @"country":rgcData.country,
-         @"countryCode":rgcData.countryCode,
+         @"country":rgcData.country == NULL ? @"" : rgcData.country,
+         @"countryCode":rgcData.countryCode == NULL ? @"" : rgcData.countryCode,
          
-         @"province":rgcData.province,
+         @"province":rgcData.province == NULL ? @"" : rgcData.province,
          
-         @"city":rgcData.city,
-         @"cityCode":rgcData.cityCode,
+         @"city":rgcData.city == NULL ? @"" : rgcData.city,
+         @"cityCode":rgcData.cityCode == NULL ? @"" : rgcData.cityCode,
          
          @"district":rgcData.district == NULL ? @"": rgcData.district ,
          
          
          
-         @"street":rgcData.street,
+         @"street":rgcData.street  == NULL ? @"": rgcData.street,
          
          @"locationDescribe":rgcData.locationDescribe,
          @"adCode":rgcData.adCode == NULL ? @"" : rgcData.adCode,
@@ -70,6 +70,7 @@
          @"errorCode":@(161),
     };
 }
+
 
 
 -(void)getCurrentLocation: (FlutterResult)result{

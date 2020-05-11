@@ -129,19 +129,51 @@ public class FlutterBaiduMapPlugin implements MethodCallHandler {
 
   Map<String,Object> location2map(BDLocation location){
     Map<String,Object> json = new HashMap<>();
-    json.put("latitude",location.getLatitude());    //获取纬度信息
-    json.put("longitude",location.getLongitude());    //获取经度信息
+     double latitude = location.getLatitude();
+    latitude = latitude == 0.0 ? 0.0 : latitude;
+    json.put("latitude",latitude);    //获取纬度信息
 
-    json.put("country",location.getCountry());    //获取国家
-    json.put("countryCode", location.getCountryCode());
-    json.put("province",location.getProvince());    //获取省份
-    json.put("city",location.getCity());    //获取城市
-    json.put("cityCode", location.getCityCode());
-    json.put("district",location.getDistrict());    //获取区县
-    json.put("street",location.getStreet());    //获取街道信息
+    double longitude = location.getLongitude();
+    longitude = longitude == 0.0 ? 0.0 : longitude;
+    json.put("longitude",longitude);    //获取经度信息
 
-    json.put("locationDescribe",location.getLocationDescribe());    //获取位置描述信息
-    json.put("adCode",location.getAdCode());    //获取城市adcode
+    String country = location.getCountry();
+    country = country == null ? "" : country;
+    json.put("country",country);    //获取国家
+
+    String countryCode = location.getCountryCode();
+    countryCode = countryCode == null ? "" : countryCode;
+    json.put("countryCode", countryCode);
+
+
+    String province = location.getProvince();
+    countryCode = province == null ? "" : province;
+    json.put("province",province);    //获取省份
+
+
+    String city = location.getCity();
+    city = city == null ? "" : city;
+    json.put("city",city);    //获取城市
+
+    String cityCode = location.getCityCode();
+    cityCode = cityCode == null ? "" : cityCode;
+    json.put("cityCode", cityCode);
+
+    String district = location.getDistrict();
+    district = district == null ? "" : district;
+    json.put("district",district);    //获取区县
+
+    String street = location.getStreet();
+    street = street == null ? "" : street;
+    json.put("street",street);    //获取街道信息
+
+    String locationDescribe = location.getLocationDescribe();
+    locationDescribe = locationDescribe == null ? "" : locationDescribe;
+    json.put("locationDescribe",locationDescribe);    //获取位置描述信息
+
+    String adCode = location.getAdCode();
+    adCode = adCode == null ? "" : adCode;
+    json.put("adCode",adCode);    //获取城市adcode
 
     json.put("isInChina",location.getLocationWhere() == BDLocation.LOCATION_WHERE_IN_CN);
   
